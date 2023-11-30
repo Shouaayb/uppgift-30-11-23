@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/style.css>
+  <title>Registreringsformulär</title>
+</head>
+<body>
+  <div class="container">
+    <h1>Registrera dig</h1>
+    <form action="/process" method="post">
+      <label for="name">Namn:</label>
+      <input type="text" name="name" required>
+      
+      <label for="email">E-post:</label>
+      <input type="email" name="email" required>
+
+      <label for="phone">Telefonnummer:</label>
+      <input type="tel" name="phone" required>
+      
+      <label for="comment">Kommentar:</label>
+      <textarea name="comment" rows="4" maxlength="200" required></textarea>
+      
+      <button type="submit">Skicka</button>
+    </form>
+    <% if (comments && comments.length > 0) { %>
+        <h2>Comments:</h2>
+        <ul>
+            <% comments.forEach(comment => { %>
+                <li>
+                    <strong>Namn:</strong> <%= comment.name %><br>
+                    <strong>E-post:</strong> <%= comment.email %><br>
+                    <strong>Telefonnummer:</strong> <%= comment.phone %><br>
+                    <strong>Kommentar:</strong> <%= comment.comment %>
+                </li>
+            <% }); %>
+        </ul>
+    <% } %>
+  </div>
+</body>
+</html>
