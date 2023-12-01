@@ -21,16 +21,14 @@ app.post('/process', (req, res) => {
     const phone = req.body.phone;
     const comment = req.body.comment;
 
-    // Läs befintliga kommentarer från filen
     const comments = JSON.parse(fs.readFileSync(__dirname + '/comments.json', 'utf8'));
 
-    // Lägg till den nya kommentaren
     comments.push({ name, email, phone, comment });
 
-    // Spara kommentarerna tillbaka till filen
+
     fs.writeFileSync(__dirname + '/comments.json', JSON.stringify(comments, null, 2), 'utf8');
 
-    // Skicka kommentarerna som JSON-svar
+
     res.render('index', { comments });
 });
 
